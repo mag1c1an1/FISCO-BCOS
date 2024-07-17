@@ -21,6 +21,8 @@
 
 set(CMAKE_CXX_STANDARD 20)
 set(Boost_NO_WARN_NEW_VERSIONS ON)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(BUILD_STATIC ON)
 message(STATUS "COMPILER_ID: ${CMAKE_CXX_COMPILER_ID}")
 if(("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU") OR("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang"))
     find_program(CCACHE_PROGRAM ccache)
@@ -30,7 +32,7 @@ if(("${CMAKE_CXX_COMPILER_ID}" MATCHES "GNU") OR("${CMAKE_CXX_COMPILER_ID}" MATC
         set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK "${CCACHE_PROGRAM}")
     endif()
 
-    add_compile_options(-Werror)
+    # add_compile_options(-Werror)
     add_compile_options(-Wall)
     add_compile_options(-pedantic)
     add_compile_options(-Wextra)

@@ -28,6 +28,7 @@
 #include "bcos-storage/TiKVStorage.h"
 #endif
 #include "rocksdb/convenience.h"
+#include "rocksdb/statistics.h"
 #include "rocksdb/filter_policy.h"
 #include <bcos-framework/security/DataEncryptInterface.h>
 #include <bcos-framework/storage/StorageInterface.h>
@@ -82,7 +83,7 @@ public:
 
         if (_enableDBStatistics)
         {
-            options.statistics = rocksdb::CreateDBStatistics();
+            options.statistics = ROCKSDB_NAMESPACE::CreateDBStatistics();
         }
         // block cache 128MB
         std::shared_ptr<rocksdb::Cache> cache = rocksdb::NewLRUCache(rocksDBOption.blockCacheSize);
